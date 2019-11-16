@@ -3,6 +3,7 @@
           :params="f7params">
     <main-page v-if="!login"></main-page>
     <login v-if="login"></login>
+    <left-menu></left-menu>
   </f7-app>
 </template>
 <script>
@@ -12,9 +13,10 @@
   import Login from "./pages/login";
   import MainPage from "./pages/main";
   import { mapState } from "vuex"
+  import LeftMenu from "./components/leftMenu";
 
   export default {
-    components: { MainPage, Login },
+    components: { MainPage, Login, LeftMenu },
 
     data() {
       return {
@@ -39,6 +41,13 @@
 
     computed: {
       ...mapState(['login'])
+    },
+
+    mounted() {
+      if (localStorage.getItem('token')) {
+        console.log(localStorage.getItem('token'))
+        this.$store.state.user.token = localStorage.getItem('token')
+      }
     }
   };
 </script>
