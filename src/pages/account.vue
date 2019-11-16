@@ -35,7 +35,7 @@
     data () {
       return {
           links: [{
-              title: 'Yours statistics',
+              title: 'Your statistics',
               link: '/'
           },{
               title: 'Recommended recipes',
