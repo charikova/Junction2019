@@ -42,13 +42,6 @@ const actions = {
           return true
         })
         .catch((error) => {
-          const toastCenter = this.$f7.toast.create({
-            text: "CardId undefined",
-            position: "center",
-            closeTimeout: 1000,
-            cssClass: "text-align-center"
-          });
-          toastCenter.open();
           throw error
         })
   }
@@ -56,12 +49,20 @@ const actions = {
 
 const mutations = {
   setUser (state, data) {
-    this.state.user = data
+    state.user = data
+    localStorage.setItem('token', state.user.token)
   },
 
   openPanel (state, data) {
-    this.state.openedPanel = data;
+   state.openedPanel = data;
+  },
+
+  logout (state) {
+    state.user = {};
+    state.login = true;
+    localStorage.setItem('token', '')
   }
+
 };
 
 export default {

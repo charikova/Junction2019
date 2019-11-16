@@ -14,12 +14,13 @@
     import HeaderMain from "../components/headerMain";
     import { mapState } from 'vuex'
     import LeftMenu from "../components/leftMenu";
+    import Login from "./login";
 
     export default {
         name: "mainPage",
-        components: {LeftMenu, HeaderMain},
+        components: {Login, LeftMenu, HeaderMain},
         computed: {
-            ...mapState([ 'activeMenu'])
+            ...mapState([ 'activeMenu', 'login'])
         }
     }
 </script>
