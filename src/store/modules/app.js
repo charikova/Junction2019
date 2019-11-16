@@ -8,7 +8,7 @@ const URL = `http://${process.env.VUE_APP_API_HOST}:${
 
 const initialState = () => ({
   user: {},
-  activeMenu: 'Log In',
+  activeMenu: 'Yours statistics',
   login: true
 });
 
