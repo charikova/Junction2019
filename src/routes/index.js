@@ -1,10 +1,10 @@
-import Main from '../pages/main'
+import Login from '../pages/login'
 import Account from '../pages/account'
 
 export default [
   {
     path: "/",
-    component: Main,
+    component: Login,
   },
   {
     path: "/account",
