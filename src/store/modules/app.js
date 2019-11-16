@@ -19,32 +19,15 @@ const axiosConfig = {
 };
 
 const getters = {
-  getMeetupName: ({name}) => name,
-  getEventId: ({eventId}) => eventId,
+
 };
 
 const actions = {
-  getEventId({getters, commit},{name,songs}) {
 
-    const data = {
-      name:name,
-      songs: songs
-    }
-    return axios
-      .post(`${URL}getEventId/`,data, axiosConfig)
-      .then(({data}) => {
-        commit("setEventId",data)
-      })
-      .catch((error) => {
-        throw error
-      })
-  }
 };
 
 const mutations = {
-  setEventId(state,{eventId}){
-    state.eventId = eventId;
-  }
+
 };
 
 export default {
