@@ -13,11 +13,20 @@ import Framework7Vue from "framework7-vue/framework7-vue.esm.bundle.js";
 
 // Combine F7 & Vue
 Framework7.use(Framework7Vue);
+import VueQrcode from '@chenfengyuan/vue-qrcode';
+Vue.component(VueQrcode.name, VueQrcode);
+
+
 // Import store
 import store from "./store";
+import Framework7Styles from "framework7/css/framework7.css";
 // Import App Component
 import App from "./app";
+//Import App Icons
+import IconsStyles from "./css/icons.css";
 
+
+// Init App
 new Vue({
   template: '<App/>',
   components: {
