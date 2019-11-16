@@ -1,37 +1,79 @@
 <template>
 <f7-page class="main-page" color-theme="green">
-    <f7-page no-toolbar no-navbar no-swipeback login-screen class="login-screen-page k-choice-login">
+    <div class="k-choice-login">
         <f7-block class="k-choice-login-block">
             <div class="k-choice-login-logo">
             </div>
             <f7-col tag="p">
                 <f7-col tag="span">
-                    <f7-button class="k-choice-login-button" raised>Log in</f7-button>
+                    <f7-button class="k-choice-login-button" round raised @click="openLogin">Log in</f7-button>
                 </f7-col>
                 <f7-col tag="span">
-                    <f7-button class="k-choice-login-button" raised>Sign up</f7-button>
+                    <f7-button class="k-choice-login-button" round  raised>Sign up</f7-button>
                 </f7-col>
             </f7-col>
         </f7-block>
-    </f7-page>
+    </div>
+    <f7-login-screen color-theme="green" class="openLogin" :opened="openedLogin">
+        <f7-navbar class="login-navbar">
+            <f7-nav-title>Log In</f7-nav-title>
+            <div class="close">
+                <i class="f7-icons" @click="openedLogin = false">close</i>
+            </div>
+        </f7-navbar>
+        <f7-page login-screen>
+            <div class="login-popup">
+                <f7-list class="login-form" form>
+                    <f7-list-input
+                            label="Username"
+                            type="text"
+                            placeholder="Your username"
+                            :value="username"
+                            @input="username = $event.target.value"
+                    ></f7-list-input>
+                </f7-list>
+                <f7-button round @click="logIn" class="login-button">Log In</f7-button>
+            </div>
+        </f7-page>
+    </f7-login-screen>
 </f7-page>
 </template>
 
 <script>
     export default {
         name: "main",
+        data () {
+            return {
+                openedLogin: false,
+                username: ''
+            }
+        },
+        methods: {
+            openLogin () {
+                this.openedLogin = !this.openedLogin
+            },
+
+            logIn () {
+
+            }
+        }
     }
 </script>
 
 <style lang="scss" scoped>
     @import "./../css/main";
     .k-choice-login {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 85%;
         &-block {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
-            height: 70%;
+            height: 90%;
         }
 
         &-button {
@@ -50,5 +92,39 @@
             border-radius: 100px;
             background: $main-color;
         }
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        cursor: pointer;
+    }
+
+    .login-navbar {
+        color: white;
+        background: $main-color;
+    }
+
+    .login-button {
+        height: 44px;
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+    }
+
+    .login-popup {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 80px;
+    }
+
+    .login-form {
+        width: 100%;
+        margin-bottom: 60px !important;
     }
 </style>
