@@ -1,29 +1,20 @@
 <template>
   <div class="stats-progress" ref="barRef">
     <div class="stats-progress-bar" :style="`width: ${percents}%; background: ${color}`"></div>
-    <div class="stats-progress-text">Saturated fats: <b>100 g</b></div>
+    <div class="stats-progress-text">{{name}}: <b>{{value}}</b></div>
   </div>
 </template>
 
 <script>
-const chartColors = {
-  red: "rgb(255, 99, 132)",
-  orange: "rgb(255, 159, 64)",
-  yellow: "rgb(255, 205, 86)",
-  green: "rgb(75, 192, 192)",
-  blue: "rgb(54, 162, 235)",
-  purple: "rgb(153, 102, 255)",
-  grey: "rgb(201, 203, 207)"
-};
 
 export default {
   name: "progressBar",
-  props: ["percents"],
+  props: ["percents", "name", "value"],
   computed: {
     color: function() {
-      if (this.percents > 75) return chartColors.red;
-      if (this.percents > 50) return chartColors.yellow;
-      return chartColors.green;
+      if (this.percents > 75) return '#ff6e7d';
+      if (this.percents > 50) return '#ffc935'
+      return '#95d059';
     }
   }
 };
