@@ -1,5 +1,5 @@
 <template>
-<f7-page class="main-page" color-theme="green">
+<f7-page class="main-page login" color-theme="green">
     <div class="k-choice-login">
         <f7-block class="k-choice-login-block">
             <div class="k-choice-login-logo">
@@ -25,11 +25,11 @@
             <div class="login-popup">
                 <f7-list class="login-form" form>
                     <f7-list-input
-                            label="Username"
+                            label="CardId"
                             type="text"
-                            placeholder="Your username"
-                            :value="username"
-                            @input="username = $event.target.value"
+                            placeholder="Your cardId"
+                            :value="cardId"
+                            @input="cardId = $event.target.value"
                     ></f7-list-input>
                 </f7-list>
                 <f7-button round @click="logIn" class="login-button">Log In</f7-button>
@@ -45,7 +45,7 @@
         data () {
             return {
                 openedLogin: false,
-                username: ''
+                cardId: ''
             }
         },
         methods: {
@@ -54,7 +54,13 @@
             },
 
             logIn () {
-
+                if (!this.cardId) return
+                this.$store.dispatch("login", {
+                    card_id: this.cardId
+                })
+                    .then (() => {
+                        this.$f7router.navigate('/account/')
+                    })
             }
         }
     }
@@ -126,5 +132,9 @@
     .login-form {
         width: 100%;
         margin-bottom: 60px !important;
+    }
+
+    .login {
+        background: white !important;
     }
 </style>

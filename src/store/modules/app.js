@@ -7,8 +7,7 @@ const URL = `http://${process.env.VUE_APP_API_HOST}:${
   }/api/`;
 
 const initialState = () => ({
-  name: "",
-  eventId: ""
+  user: {}
 });
 
 const state = initialState();
@@ -23,11 +22,31 @@ const getters = {
 };
 
 const actions = {
+  login({getters, commit}, data) {
 
+    return axios
+        .post(`${URL}login`,data, axiosConfig)
+        .then(({data}) => {
+          commit("setUsers", data)
+          return true
+        })
+        .catch((error) => {
+          const toastCenter = this.$f7.toast.create({
+            text: "CardId undefined",
+            position: "center",
+            closeTimeout: 1000,
+            cssClass: "text-align-center"
+          });
+          toastCenter.open();
+          throw error
+        })
+  }
 };
 
 const mutations = {
-
+  setUser (state, data) {
+    this.user = data
+  }
 };
 
 export default {
