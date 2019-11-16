@@ -9,7 +9,8 @@ const URL = `http://${process.env.VUE_APP_API_HOST}:${
 const initialState = () => ({
   user: {},
   activeMenu: 'Yours statistics',
-  login: true
+  login: true,
+  openedPanel: false
 });
 
 const state = initialState();
@@ -56,6 +57,10 @@ const actions = {
 const mutations = {
   setUser (state, data) {
     this.state.user = data
+  },
+
+  openPanel (state, data) {
+    this.state.openedPanel = data;
   }
 };
 

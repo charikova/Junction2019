@@ -1,7 +1,7 @@
 <template>
     <f7-navbar ref="navbar" class="k-header-navbar">
         <f7-nav-left>
-            <i class="f7-icons">menu</i>
+            <i class="f7-icons" @click="openPanel">menu</i>
         </f7-nav-left>
         <f7-nav-title class="k-title">
             <slot></slot>
@@ -14,6 +14,12 @@
     name: "HeaderMain",
     mounted() {
       this.$refs.navbar.size();
+    },
+
+    methods: {
+        openPanel () {
+            this.$store.commit('openPanel', true)
+        }
     }
   };
 </script>
@@ -21,6 +27,8 @@
 <style scoped lang="scss">
     @import "./../css/main";
     .k-header-navbar {
+        position: fixed;
+        z-index: 5001;
         background: $main-color;
         height: 52px;
         color: #fff;
