@@ -1,13 +1,9 @@
 import Login from '../pages/login'
-import Account from '../pages/account'
+import Profile from '../pages/profile'
 
 export default [
   {
-    path: "/",
-    component: Login,
-  },
-  {
-    path: "/account",
-    component: Account,
-  },
+    path: '/',
+    component: Profile,
+  }
 ];

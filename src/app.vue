@@ -1,19 +1,21 @@
 <template>
   <f7-app id="app"
           :params="f7params">
-    <f7-view id="main-view"
-             :router="true"
-             :push-state="true"></f7-view>
+    <main-page v-if="!login"></main-page>
+    <login v-if="login"></login>
   </f7-app>
 </template>
 <script>
 
 
-  import {mapGetters} from "vuex";
   import routes from "./routes/index";
-
+  import Login from "./pages/login";
+  import MainPage from "./pages/main";
+  import { mapState } from "vuex"
 
   export default {
+    components: { MainPage, Login },
+
     data() {
       return {
         popupOpened: false,
@@ -34,6 +36,10 @@
         },
       };
     },
+
+    computed: {
+      ...mapState(['login'])
+    }
   };
 </script>
 <style>

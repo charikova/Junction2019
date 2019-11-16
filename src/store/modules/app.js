@@ -7,7 +7,9 @@ const URL = `http://${process.env.VUE_APP_API_HOST}:${
   }/api/`;
 
 const initialState = () => ({
-  user: {}
+  user: {},
+  activeMenu: 'Log In',
+  login: true
 });
 
 const state = initialState();
@@ -53,7 +55,7 @@ const actions = {
 
 const mutations = {
   setUser (state, data) {
-    this.user = data
+    this.state.user = data
   }
 };
 

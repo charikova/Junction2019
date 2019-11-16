@@ -14,7 +14,7 @@
             </f7-col>
         </f7-block>
     </div>
-    <f7-login-screen color-theme="green" class="openLogin" :opened="openedLogin">
+    <f7-login-screen color-theme="green" class="openLogin" :opened="openedLogin && $store.state.login">
         <f7-navbar class="login-navbar">
             <f7-nav-title>Log In</f7-nav-title>
             <div class="close">
@@ -41,7 +41,7 @@
 
 <script>
     export default {
-        name: "main",
+        name: "login",
         data () {
             return {
                 openedLogin: false,
@@ -59,7 +59,10 @@
                     card_id: this.cardId
                 })
                     .then (() => {
-                        this.$f7router.navigate('/account')
+                        this.openedLogin = false
+                        setTimeout(
+                            () => this.$store.state.login = false,
+                            300)
                     })
             }
         }
