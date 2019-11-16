@@ -2,7 +2,7 @@
   <div class="stats-progress" ref="barRef">
     <div
       class="stats-progress-bar"
-      :style="`width: ${percents}%; background: ${color}`"
+      :style="`width: ${percentsReal}%; background: ${color}`"
     ></div>
     <div class="stats-progress-text">
       {{ name }}
@@ -18,6 +18,16 @@ export default {
     color: function() {
       return "#ff6e7d";
     }
+  },
+  data() {
+    return {
+      percentsReal: 0
+    };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.percentsReal = this.percents;
+    }, 1);
   }
 };
 </script>
@@ -40,6 +50,7 @@ export default {
     background: rgb(255, 220, 155);
     border-radius: 3px;
     z-index: 10;
+    transition: width 0.5s ease-in-out;
   }
   &-text {
     z-index: 11;
