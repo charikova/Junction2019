@@ -1,7 +1,6 @@
 <template>
-    <f7-page class="main-page" color-theme="green">
-        <f7-page no-toolbar no-swipeback class="k-account" style="background: white">
-            <div class="profile">
+    <f7-page class="main-page" color-theme="green" style="background: white">
+         <div class="profile">
                 <div class="profile-name">
                     <div class="profile-name-image">
                     </div>
@@ -23,7 +22,6 @@
                 <f7-list-item title="Settings"></f7-list-item>
                 <f7-list-item title="About"></f7-list-item>
             </f7-list>
-        </f7-page>
     </f7-page>
 </template>
 
@@ -40,7 +38,7 @@
         background: $main-color;
         color: #fff;
         font-weight: bold;
-        padding: 20px 10px;
+        padding: 10px 10px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -67,10 +65,10 @@
         }
         &-actions .button {
             border-color: #fff;
-            font-size: 20px;
+            font-size: 16px;
             color: #fff;
-            height: 50px;
-            line-height: 50px;
+            height: 40px;
+            line-height: 40px;
         }
     }
 </style>
