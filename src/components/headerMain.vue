@@ -1,12 +1,11 @@
 <template>
     <f7-navbar ref="navbar" class="k-header-navbar">
-        <f7-nav-left></f7-nav-left>
+        <f7-nav-left>
+            <i class="f7-icons">menu</i>
+        </f7-nav-left>
         <f7-nav-title class="k-title">
             <slot></slot>
         </f7-nav-title>
-        <div class="k-right">
-            <i class="f7-icons">menu</i>
-        </div>
     </f7-navbar>
 </template>
 
@@ -25,6 +24,12 @@
         background: $main-color;
         height: 52px;
         color: #fff;
+
+        .navbar-inner .sliding {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
     .k-title {
         font-size: 20px!important;
@@ -33,7 +38,7 @@
     .k-right {
         position: absolute;
         top: 10px;
-        right: 10px;
+        left: 15px;
 
         i {
             font-size: 26px !important;
