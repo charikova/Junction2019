@@ -93,6 +93,9 @@
             height: 44px;
             margin-bottom: 30px;
             cursor: pointer;
+            border-width: 2px;
+            font-weight: bold;
+            text-transform: uppercase;
         }
 
         &-logo {
@@ -121,7 +124,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 22px;
+        border-width: 2px;
+        font-weight: bold;
+        text-transform: uppercase;
     }
 
     .login-popup {
