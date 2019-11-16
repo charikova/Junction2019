@@ -59,7 +59,7 @@
                     card_id: this.cardId
                 })
                     .then (() => {
-                        this.$f7router.navigate('/account/')
+                        this.$f7router.navigate('/account')
                     })
             }
         }

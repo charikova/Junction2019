@@ -17,6 +17,14 @@ const axiosConfig = {
   }
 };
 
+
+const axiosConfigAut = {
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": state.user.token
+  }
+};
+
 const getters = {
 
 };
@@ -27,7 +35,7 @@ const actions = {
     return axios
         .post(`${URL}login`,data, axiosConfig)
         .then(({data}) => {
-          commit("setUsers", data)
+          commit("setUser", data)
           return true
         })
         .catch((error) => {
