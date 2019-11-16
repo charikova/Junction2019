@@ -64,6 +64,15 @@
                             () => this.$store.state.login = false,
                             300)
                     })
+                    .catch(() =>{
+                        const toastCenter = this.$f7.toast.create({
+                            text: "CardId undefined",
+                            position: "center",
+                            closeTimeout: 1000,
+                            cssClass: "text-align-center"
+                        });
+                        toastCenter.open();
+                    })
             }
         }
     }
@@ -82,7 +91,7 @@
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
-            height: 90%;
+            height: 80%;
         }
 
         &-button {
@@ -99,10 +108,10 @@
         }
 
         &-logo {
-            width: 140px;
+            width: 160px;
             height: 140px;
-            border-radius: 100px;
-            background: $main-color;
+            background: url('./../img/logoJ.png');
+            background-size: cover;
         }
     }
 

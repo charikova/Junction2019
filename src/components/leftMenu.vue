@@ -1,5 +1,5 @@
 <template>
-    <f7-panel left resizable swipe class="panel" :opened="openedPanel" ref="panel">
+    <f7-panel left resizable @panel:close="close" class="panel-menu" ref="panel">
         <account></account>
     </f7-panel>
 </template>
@@ -19,12 +19,22 @@
                 this.$store.commit('openPanel', false)
             }
         },
-        mounted() {
-            $$('.panel').on('panel:close', this.close);
+
+        watch: {
+            openedPanel (newValue) {
+                if (newValue) {
+                    this.$refs.panel.open()
+                }
+                else {
+                    this.$refs.panel.close()
+                }
+            }
         }
     }
 </script>
 
 <style scoped>
-
+    .panel-menu {
+        box-shadow: 0 0 3px 2px rgba(0,0,0,0.1);
+    }
 </style>
