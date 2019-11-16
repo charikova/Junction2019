@@ -1,11 +1,11 @@
 <template>
   <f7-page style="background: white">
     <div class="stats">
-      <div class="stats-section">
+      <div class="stats-section stats-section-chart">
         <CircleDiagram />
       </div>
       <div class="stats-section">
-
+        <progress-bar percents="100" />
       </div>
     </div>
   </f7-page>
@@ -13,10 +13,11 @@
 
 <script>
 import CircleDiagram from "../components/circleDiagram";
+import ProgressBar from "../components/progressBar";
 
 export default {
   name: "profile",
-  components: { CircleDiagram }
+  components: { ProgressBar, CircleDiagram }
 };
 </script>
 
@@ -25,9 +26,11 @@ export default {
   max-width: 500px;
   margin: 0 auto;
   &-section {
-    padding: 15px 0 15px;
-    margin-bottom: 15px;
+    padding: 15px;
     border-bottom: 1px solid #ddd;
+  }
+  &-section-chart {
+    padding: 15px 0 15px;
   }
 }
 </style>
