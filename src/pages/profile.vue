@@ -5,7 +5,7 @@
         <CircleDiagram />
       </div>
       <div class="stats-section">
-        kek
+
       </div>
     </div>
   </f7-page>
@@ -25,7 +25,7 @@ export default {
   max-width: 500px;
   margin: 0 auto;
   &-section {
-    padding: 0 0 15px;
+    padding: 15px 0 15px;
     margin-bottom: 15px;
     border-bottom: 1px solid #ddd;
   }

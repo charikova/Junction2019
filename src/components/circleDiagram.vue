@@ -27,12 +27,12 @@ export default {
             data: [
               randomScalingFactor(),
               randomScalingFactor(),
-              randomScalingFactor(),
+              randomScalingFactor()
             ],
             backgroundColor: [
-              chartColors.red,
+              chartColors.green,
               chartColors.yellow,
-              chartColors.green
+              chartColors.red
             ],
             label: "Dataset 1"
           }
