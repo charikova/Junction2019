@@ -6,6 +6,7 @@
         <f7-view id="main-view"
                  :router="true"
                  :push-state="true"
+                 :routes="routes"
                  main
         ></f7-view>
     </f7-page>
@@ -17,12 +18,18 @@
     import Login from "./login";
     import Account from "./account";
     import LeftMenu from "../components/leftMenu";
+    import routes from './../routes/index'
 
     export default {
         name: "mainPage",
         components: {LeftMenu, Account, Login, HeaderMain},
         computed: {
             ...mapState([ 'activeMenu', 'login'])
+        },
+        data () {
+            return {
+                routes
+            }
         }
     }
 </script>

@@ -91,6 +91,7 @@ export default {
         month: this.currentMonth
       })
         .then(()=>{
+            this.$store.commit('setE', e)
             this.$f7router.navigate('listE', { reloadAll:true })
         })
     }

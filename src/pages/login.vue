@@ -30,6 +30,7 @@
                             placeholder="Your cardId"
                             :value="cardId"
                             @input="cardId = $event.target.value"
+                            class="login-input"
                     ></f7-list-input>
                 </f7-list>
                 <f7-button round @click="logIn" class="login-button">Log In</f7-button>
@@ -159,4 +160,11 @@
     .login {
         background: white !important;
     }
+
+    .login-input {
+        .item-input-wrap {
+            border-bottom: 1px black solid;
+        }
+    }
+
 </style>

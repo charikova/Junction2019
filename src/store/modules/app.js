@@ -11,7 +11,8 @@ const initialState = () => ({
   login: true,
   openedPanel: false,
   statistics: [],
-  products: []
+  products: [],
+  e: {}
 });
 
 const state = initialState();
@@ -99,6 +100,10 @@ const mutations = {
   setProducts(state, data) {
     state.products = data;
     console.log(state.products)
+  },
+
+  setE (state, data) {
+    state.e = data
   }
 };
 

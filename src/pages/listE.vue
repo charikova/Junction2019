@@ -1,7 +1,8 @@
 <template>
-    <f7-page>
-        <f7-block strong>
-            <h2>asdasd</h2>
+    <f7-page style="background: white">
+        <f7-block strong :style="`background:${e.color};color:white;`">
+            <h2>{{`${e.e} - ${e.name}.`}}</h2>
+            <h4>{{`This is ${e.description}. Side effetcs: ${e.side_effects}.`}}</h4>
         </f7-block>
         <f7-block-title>Products</f7-block-title>
         <f7-list media-list>
@@ -23,7 +24,10 @@
     export default {
         name: "listE",
         computed: {
-            ...mapState(['products'])
+            ...mapState(['products', 'e'])
+        },
+        mounted() {
+            console.log(this.e)
         }
     }
 </script>

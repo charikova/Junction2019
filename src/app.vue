@@ -29,12 +29,7 @@
           theme: "ios",
           routes,
           pushState: true,
-          history: true,
-          on: {
-            routeChanged: (next, prev, router) => {
-              localStorage.setItem("routersHistory", router.history);
-            }
-          },
+          history: true
         },
       };
     },
