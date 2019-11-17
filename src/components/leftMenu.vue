@@ -5,7 +5,6 @@
 </template>
 
 <script>
-    import $$ from 'dom7'
     import { mapState } from 'vuex'
     import Account from "../pages/account";
     export default {
@@ -22,6 +21,7 @@
 
         watch: {
             openedPanel (newValue) {
+                console.log(this.$refs)
                 if (newValue) {
                     this.$refs.panel.open()
                 }

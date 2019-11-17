@@ -10,7 +10,8 @@ const initialState = () => ({
   user: {},
   activeMenu: 'Yours statistics',
   login: true,
-  openedPanel: false
+  openedPanel: false,
+  f7: {}
 });
 
 const state = initialState();
