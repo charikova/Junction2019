@@ -1,5 +1,8 @@
 <template>
   <f7-page style="background: white">
+    <div v-if="!loaded"  style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center">
+      <f7-preloader :size="42"></f7-preloader>
+    </div>
     <div class="stats" v-if="loaded">
       <div class="stats-section ">
         <div class="stats-section-chart">
@@ -63,7 +66,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("getStatistics").finally(() => {
+    this.$store.dispatch("getStatistics").then(() => {
       this.loaded = true;
     });
   },
