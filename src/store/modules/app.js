@@ -53,6 +53,24 @@ const actions = {
       .catch(error => {
         throw error;
       });
+  },
+
+  getProducts ({ getters, commit, state }, data) {
+    const axiosConfigAuth = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: state.user.token
+      }
+    };
+    return axios
+        .post(`${URL}products`,data, axiosConfigAuth)
+        .then(({ data }) => {
+          commit("setProducts", data);
+          return true;
+        })
+        .catch(error => {
+          throw error;
+        });
   }
 };
 
@@ -76,6 +94,9 @@ const mutations = {
   },
   setStatistics(state, data) {
     state.statistics = data;
+  },
+  setProducts(state, data) {
+    state.produtcs = data;
   }
 };
 
