@@ -1,5 +1,5 @@
 <template>
-<f7-page class="main-page login" color-theme="green">
+<f7-page class="main-page login" color-theme="green" style="background: white">
     <div class="k-choice-login">
         <f7-block class="k-choice-login-block">
             <div class="k-choice-login-logo">
