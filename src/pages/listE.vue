@@ -9,7 +9,6 @@
             <f7-list-item
                     v-for="(product, index) in products"
                     :key="index+'-key'"
-                    :link="product.picture_url"
                     :title="product.name_eng || product.name_fin"
                     :text="product.ing_eng || product.ing_fin"
             >
