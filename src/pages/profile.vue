@@ -45,14 +45,13 @@
         </div>
       </div>
     </div>
-    <left-menu></left-menu>
+
   </f7-page>
 </template>
 
 <script>
 import CircleDiagram from "../components/circleDiagram";
 import ProgressBar from "../components/progressBar";
-import LeftMenu from "../components/leftMenu"
 
 export default {
   name: "profile",

@@ -27,35 +27,17 @@
 
 <script>
     import {mapState} from 'vuex'
+    import vue from './../main'
 
-  export default {
-    name: "account",
-    computed: {
-        ...mapState(['user'])
-    },
-    data () {
-      return {
-          links: [{
-              title: 'Your statistics',
-              link: '/'
-          },{
-              title: 'Recommended recipes',
-              link: '/recipes'
-          }, {
-              title: 'Profile',
-              link: '/profile'
-          }]
-      }
-    },
-    methods: {
-        logOut () {
-            this.$store.commit('openPanel', false)
-            setTimeout(()=>this.$store.commit('logout'), 300)
+    export default {
+        name: "account",
+        computed: {
+            ...mapState(['user'])
         },
         data() {
             return {
                 links: [{
-                    title: 'Yours statistics',
+                    title: 'Your statistics',
                     link: '/'
                 }, {
                     title: 'Recommended recipes',
@@ -71,12 +53,11 @@
                 this.$store.commit('openPanel', false)
                 setTimeout(() => this.$store.commit('logout'), 300)
             },
-
             navigateLink(item) {
-                this.$f7router.navigate(item.link, { reloadAll: true })
+                vue.$f7.views.main.router.navigate(item.link, {reloadAll: true})
             }
         }
-    };
+    }
 </script>
 
 <style lang="scss" scoped>

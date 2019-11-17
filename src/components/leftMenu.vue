@@ -21,7 +21,6 @@
 
         watch: {
             openedPanel (newValue) {
-                console.log(this.$refs)
                 if (newValue) {
                     this.$refs.panel.open()
                 }
