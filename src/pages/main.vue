@@ -8,7 +8,6 @@
                  :push-state="true"
                  main
         ></f7-view>
-        <left-menu></left-menu>
     </f7-page>
 </template>
 

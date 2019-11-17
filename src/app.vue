@@ -1,8 +1,9 @@
 <template>
   <f7-app id="app"
           :params="f7params">
-    <main-page v-show="!login"></main-page>
+    <main-page v-if="!login"></main-page>
     <login v-if="login"></login>
+    <left-menu></left-menu>
   </f7-app>
 </template>
 <script>
@@ -12,9 +13,10 @@
   import Login from "./pages/login";
   import MainPage from "./pages/main";
   import { mapState } from "vuex"
+  import LeftMenu from "./components/leftMenu";
 
   export default {
-    components: { MainPage, Login },
+    components: {LeftMenu, MainPage, Login },
 
     data() {
       return {
@@ -38,7 +40,7 @@
     },
 
     computed: {
-      ...mapState(['login'])
+      ...mapState(['login', 'exit'])
     },
 
     mounted() {

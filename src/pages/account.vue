@@ -50,14 +50,13 @@
         },
         methods: {
             logOut() {
+
                 this.$store.commit('openPanel', false)
                 setTimeout(() => this.$store.commit('logout'), 300)
+                vue.$f7.views.main.router.navigate('/', {reloadAll: true})
             },
             navigateLink(item) {
-                vue.$f7.views.main.router.navigate(item.link, {
-                    reloadCurrent: true,
-                    ignoreCache: true,
-                    reloadAll:true})
+                vue.$f7.views.main.router.navigate(item.link, {reloadAll: true})
             }
         }
     }
