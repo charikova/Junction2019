@@ -53,7 +53,7 @@
       <div class="stats-section">
         <div class="stats-section-title">Food additives</div>
         <div class="stats-row" v-for="e in monthData.top">
-          <div>
+          <div @click="openListE(e)">
             <span class="stats-label" :style="`background-color: ${e.color}`">{{
               e.e
             }}</span>
@@ -83,6 +83,13 @@ export default {
       const swiper = this.$refs.swiperRef.swiper;
       if(!swiper) return;
       this.currentMonth = this.monthNames[swiper.activeIndex];
+    },
+
+    openListE (e) {
+      this.$store.dispatch('getProducts', {
+        name: e.e,
+        month: "August"
+      })
     }
   },
   mounted() {
@@ -112,6 +119,12 @@ export default {
       return this.monthNames.map(name =>
         this.$store.state.statistics.find(data => data.month === name)
       );
+    }
+  },
+
+  watch: {
+    currentMonth (newValue) {
+      this.$store.commit('setCurrentMonth', newValue)
     }
   }
 };
