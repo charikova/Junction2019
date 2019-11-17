@@ -3,12 +3,7 @@
         <header-main>
            {{ activeMenu }}
         </header-main>
-        <f7-view id="main-view"
-                 :router="true"
-                 :push-state="true"
-                 :routes="routes"
-                 main
-        ></f7-view>
+        <router-view></router-view>
     </f7-page>
 </template>
 

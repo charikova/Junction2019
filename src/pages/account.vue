@@ -53,11 +53,11 @@
             logOut() {
                 this.$store.commit('openPanel', false)
                 setTimeout(() => this.$store.commit('logout'), 300)
-                vue.$f7.views.main.router.navigate('/', {reloadAll: true})
+                this.$router.push(item.link,)('/')
             },
             navigateLink(item) {
                 this.$store.commit('setMenuName', item.title)
-                vue.$f7.views.main.router.navigate(item.link, {reloadAll: true})
+                this.$router.push(item.link,)
                 this.$store.commit('openPanel', false)
             }
         }

@@ -3,6 +3,14 @@ import "@babel/polyfill";
 
 // Import Vue
 import Vue from "vue";
+import VueRouter from "vue-router";
+import Routes from './routes'
+
+const router = new VueRouter({
+  routes: Routes
+});
+
+Vue.use(VueRouter)
 
 // Import F7
 import Framework7 from "framework7/framework7.esm.bundle.js";
@@ -24,7 +32,7 @@ import Framework7Styles from "framework7/css/framework7.css";
 import App from "./app";
 //Import App Icons
 import IconsStyles from "./css/icons.css";
-
+import routes from './routes'
 
 // Init App
 export default new Vue({
@@ -32,6 +40,7 @@ export default new Vue({
   components: {
     app: App
   },
+  router: router,
   store,
   data() {
     return {
