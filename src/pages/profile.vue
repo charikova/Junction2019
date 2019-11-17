@@ -16,7 +16,7 @@
             on: { slideChange }
           }"
         >
-          <f7-swiper-slide v-for="curMonth in months">
+          <f7-swiper-slide v-for="(curMonth, index) in months" :key="index+'-key'">
             <div class="stats-section-chart">
               <CircleDiagram
                 :proteins="curMonth.proteins"
@@ -88,8 +88,11 @@ export default {
     openListE (e) {
       this.$store.dispatch('getProducts', {
         name: e.e,
-        month: "August"
+        month: this.currentMonth
       })
+        .then(()=>{
+            this.$f7router.navigate('listE', { reloadAll:true })
+        })
     }
   },
   mounted() {
@@ -119,12 +122,6 @@ export default {
       return this.monthNames.map(name =>
         this.$store.state.statistics.find(data => data.month === name)
       );
-    }
-  },
-
-  watch: {
-    currentMonth (newValue) {
-      this.$store.commit('setCurrentMonth', newValue)
     }
   }
 };

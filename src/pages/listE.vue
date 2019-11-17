@@ -1,15 +1,15 @@
 <template>
     <f7-page>
-        <f7-block-title>Songs</f7-block-title>
+        <f7-block-title>Products</f7-block-title>
         <f7-list media-list>
             <f7-list-item
-                    v-for="product in produtcs"
+                    v-for="(product, index) in products"
+                    :key="index+'-key'"
                     :link="product.picture_url"
                     :title="product.name_eng || product.name_fin"
-                    subtitle="Beatles"
-                    text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
+                    :text="product.ing_eng || product.ing_fin"
             >
-                <img slot="media" :src="product.picture_url" width="80" />
+                <img slot="media" :src="product.picture_url+'?fit=clip&h=40&w=40'" width="40" />
             </f7-list-item>
         </f7-list>
     </f7-page>
