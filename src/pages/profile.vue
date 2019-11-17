@@ -9,14 +9,17 @@
     <div class="stats" v-if="loaded">
       <div class="stats-section">
         <f7-swiper
-           ref="swiperRef"
+          ref="swiperRef"
           navigation
           :params="{
             initialSlide: 2,
             on: { slideChange }
           }"
         >
-          <f7-swiper-slide v-for="(curMonth, index) in months" :key="index+'-key'">
+          <f7-swiper-slide
+            v-for="(curMonth, index) in months"
+            :key="index + '-key'"
+          >
             <div class="stats-section-chart">
               <CircleDiagram
                 :proteins="curMonth.proteins"
@@ -77,22 +80,38 @@ export default {
   components: { ProgressBar, CircleDiagram },
   methods: {
     sugarClick() {
-      this.$f7router.navigate("/purchases/sugar");
+      this.$store
+        .dispatch("getSugar", {
+          month: this.currentMonth
+        })
+        .then(() => {
+          this.$f7router.navigate("/purchases/sugar");
+        });
+    },
+    fatsClick() {
+      this.$store
+        .dispatch("getFats", {
+          month: this.currentMonth
+        })
+        .then(() => {
+          this.$f7router.navigate("/purchases/fats");
+        });
     },
     slideChange() {
       const swiper = this.$refs.swiperRef.swiper;
-      if(!swiper) return;
+      if (!swiper) return;
       this.currentMonth = this.monthNames[swiper.activeIndex];
     },
 
-    openListE (e) {
-      this.$store.dispatch('getProducts', {
-        name: e.e,
-        month: this.currentMonth
-      })
-        .then(()=>{
-            this.$f7router.navigate('listE', { reloadAll:true })
+    openListE(e) {
+      this.$store
+        .dispatch("getProducts", {
+          name: e.e,
+          month: this.currentMonth
         })
+        .then(() => {
+          this.$f7router.navigate("listE");
+        });
     }
   },
   mounted() {
