@@ -83,13 +83,13 @@ export default {
     return {
       loaded: false,
       monthNames: ["August", "September", "October"],
-      currentMonthIndex: "2"
+      currentMonth: "October"
     };
   },
   computed: {
     monthData: function() {
       const result = this.$store.state.statistics.find(
-        data => data.month === this.monthNames[this.currentMonthIndex]
+        data => data.month === this.currentMonth
       );
       result.top = result.top.map(item => ({
         ...item,
