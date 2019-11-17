@@ -1,7 +1,7 @@
 <template>
     <f7-navbar ref="navbar" class="k-header-navbar">
         <f7-nav-left>
-            <i class="f7-icons" @click="openPanel">menu</i>
+            <i class="f7-icons" style="font-weight: bold;" @click="openPanel">menu</i>
         </f7-nav-left>
         <f7-nav-title class="k-title">
             <slot></slot>
