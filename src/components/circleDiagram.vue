@@ -16,29 +16,31 @@ const chartColors = {
 
 export default {
   extends: Doughnut,
+  props: ["proteins", "carbohydrates", "fats"],
   mounted() {
-    this.renderChart(this.chartdata, this.chartoptions);
+    const chartdata = {
+      datasets: [
+        {
+          data: [Math.round(this.proteins), Math.round(this.fats), Math.round(this.carbohydrates)],
+          // data: [
+          //   randomScalingFactor(),
+          //   randomScalingFactor(),
+          //   randomScalingFactor()
+          // ],
+          backgroundColor: [
+            chartColors.green,
+            chartColors.yellow,
+            chartColors.red
+          ],
+          label: "Dataset 1"
+        }
+      ],
+      labels: ["Proteins", "Fats", "Carbohydrates"]
+    };
+    this.renderChart(chartdata, this.chartoptions);
   },
   data() {
     return {
-      chartdata: {
-        datasets: [
-          {
-            data: [
-              randomScalingFactor(),
-              randomScalingFactor(),
-              randomScalingFactor()
-            ],
-            backgroundColor: [
-              chartColors.green,
-              chartColors.yellow,
-              chartColors.red
-            ],
-            label: "Dataset 1"
-          }
-        ],
-        labels: ["Proteins", "Fats", "Carbohydrates"]
-      },
       chartoptions: {
         responsive: true,
         legend: {

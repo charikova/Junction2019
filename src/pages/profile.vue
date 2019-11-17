@@ -1,9 +1,13 @@
 <template>
   <f7-page style="background: white">
-    <div class="stats">
+    <div class="stats" v-if="loaded">
       <div class="stats-section ">
         <div class="stats-section-chart">
-          <CircleDiagram />
+          <CircleDiagram
+            :proteins="monthData.proteins"
+            :carbohydrates="monthData.carbohydrates"
+            :fats="monthData.fats"
+          />
         </div>
       </div>
       <div class="stats-section">
@@ -27,21 +31,25 @@
         <div class="stats-section-title">Food additives</div>
         <div class="stats-row">
           <div>
-            <span class="stats-label" style="background-color: #ff6e7d">E102</span>
-              <span style="margin-left: 10px">Tartrazine</span>
+            <span class="stats-label" style="background-color: #ff6e7d"
+              >E102</span
+            >
+            <span style="margin-left: 10px">Tartrazine</span>
           </div>
-            <div class="stats-number" style="border-color: #ff6e7d">
-                {{ 12 }}
-            </div>
+          <div class="stats-number" style="border-color: #ff6e7d">
+            {{ 12 }}
+          </div>
         </div>
         <div class="stats-row">
           <div>
-            <span class="stats-label" style="background-color: #ffc935">E124</span>
-              <span style="margin-left: 10px">Ponceau</span>
+            <span class="stats-label" style="background-color: #ffc935"
+              >E124</span
+            >
+            <span style="margin-left: 10px">Ponceau</span>
           </div>
-            <div class="stats-number" style="border-color: #ffc935">
-                {{ 12 }}
-            </div>
+          <div class="stats-number" style="border-color: #ffc935">
+            {{ 12 }}
+          </div>
         </div>
       </div>
     </div>
@@ -57,11 +65,26 @@ export default {
   components: { ProgressBar, CircleDiagram },
   methods: {
     sugarClick() {
-      this.$f7router.navigate('/purchases/sugar')
+      this.$f7router.navigate("/purchases/sugar");
     }
   },
   mounted() {
-    this.$store.dispatch("getStatistics");
+    this.$store.dispatch("getStatistics").finally(() => {
+      this.loaded = true;
+    });
+  },
+  data() {
+    return {
+      loaded: false
+    };
+  },
+  computed: {
+    monthData: function() {
+      const result = this.$store.state.statistics.find(
+        data => data.month === "10"
+      );
+      return result;
+    }
   }
 };
 </script>
@@ -123,7 +146,7 @@ export default {
     line-height: 30px;
     color: #fff;
     font-weight: bold;
-      display: inline-block;
+    display: inline-block;
   }
 }
 </style>

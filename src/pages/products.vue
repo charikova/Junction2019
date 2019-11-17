@@ -22,6 +22,16 @@ export default {
       }
       return "";
     }
+  },
+  data() {
+    return {
+      products: [
+        {
+          name: 'Chipseki',
+          img: '',
+        }
+      ]
+    }
   }
 };
 </script>

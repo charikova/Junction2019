@@ -10,7 +10,7 @@ const initialState = () => ({
   activeMenu: "Your statistics",
   login: true,
   openedPanel: false,
-  statistics: {}
+  statistics: []
 });
 
 const state = initialState();
@@ -44,7 +44,6 @@ const actions = {
         Authorization: state.user.token
       }
     };
-    console.log(axiosConfigAuth)
     return axios
       .get(`${URL}products`, axiosConfigAuth)
       .then(({ data }) => {
