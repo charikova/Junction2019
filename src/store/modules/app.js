@@ -45,7 +45,7 @@ const actions = {
       }
     };
     return axios
-      .get(`${URL}products`, axiosConfigAuth)
+      .get(`${URL}statistics`, axiosConfigAuth)
       .then(({ data }) => {
         commit("setStatistics", data);
         return true;

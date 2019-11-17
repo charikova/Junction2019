@@ -3,6 +3,7 @@
         <div class="profile">
             <div class="profile-name">
                 <div class="profile-name-image">
+                    {{user.name && user.name.slice(0,1)}}
                 </div>
                 <div class="profile-name-text">
                     {{ user.name }}
@@ -50,13 +51,14 @@
         },
         methods: {
             logOut() {
-
                 this.$store.commit('openPanel', false)
                 setTimeout(() => this.$store.commit('logout'), 300)
                 vue.$f7.views.main.router.navigate('/', {reloadAll: true})
             },
             navigateLink(item) {
+                this.$store.commit('setMenuName', item.title)
                 vue.$f7.views.main.router.navigate(item.link, {reloadAll: true})
+                this.$store.commit('openPanel', false)
             }
         }
     }
@@ -80,13 +82,17 @@
             flex-direction: row;
             align-items: center;
 
+
             &-image {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 margin-right: 10px;
                 border-radius: 50%;
                 height: 50px;
                 width: 50px;
                 border: 1px solid black;
-
+                font-size: 1.5em;
                 img {
                     width: 100%;
                     height: 100%;

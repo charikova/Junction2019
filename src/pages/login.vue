@@ -125,6 +125,11 @@
     .login-navbar {
         color: white;
         background: $main-color;
+        height: 52px;
+
+        .title {
+            font-size: 20px !important;
+        }
     }
 
     .login-button {
