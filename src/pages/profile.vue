@@ -103,15 +103,15 @@ export default {
       this.currentMonth = this.monthNames[swiper.activeIndex];
     },
 
-    openListE(e) {
-      this.$store
-        .dispatch("getProducts", {
-          name: e.e,
-          month: this.currentMonth
+    openListE (e) {
+      this.$store.dispatch('getProducts', {
+        name: e.e,
+        month: this.currentMonth
+      })
+        .then(()=>{
+            this.$store.commit('setE', e)
+            this.$f7router.navigate('listE', { reloadAll:true })
         })
-        .then(() => {
-          this.$f7router.navigate("listE");
-        });
     }
   },
   mounted() {

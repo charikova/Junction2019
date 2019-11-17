@@ -19,8 +19,9 @@
                 ></f7-list-input>
                 <f7-list simple-list>
                     <f7-list-item
-                            v-for="tag in tags"
+                            v-for="(tag, index) in tags"
                             :title="tag.name"
+                            :key="index+'key'"
                     >
                         <f7-toggle :checked="tag.flag"></f7-toggle>
                     </f7-list-item>
@@ -45,10 +46,6 @@
                 tags: [{
                     name: 'vegan',
                     flag: true
-                },
-                    {
-                        name: 'vegetarian',
-                        flag: true
                     },
                     {
                         name: 'gluten',
@@ -66,6 +63,10 @@
         },
         computed: {
             ...mapState(['user'])
+        },
+
+        mounted () {
+          this.name = this.user.name
         },
 
         methods: {
