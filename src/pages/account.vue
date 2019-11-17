@@ -54,7 +54,10 @@
                 setTimeout(() => this.$store.commit('logout'), 300)
             },
             navigateLink(item) {
-                vue.$f7.views.main.router.navigate(item.link, {reloadAll: true})
+                vue.$f7.views.main.router.navigate(item.link, {
+                    reloadCurrent: true,
+                    ignoreCache: true,
+                    reloadAll:true})
             }
         }
     }
