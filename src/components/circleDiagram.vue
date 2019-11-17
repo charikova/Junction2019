@@ -1,9 +1,6 @@
 <script>
 import { Doughnut } from "vue-chartjs";
 
-const randomScalingFactor = function() {
-  return Math.round(Math.random() * 100);
-};
 const chartColors = {
   red: 'rgb(255, 99, 132)',
   orange: 'rgb(255, 159, 64)',
@@ -16,7 +13,7 @@ const chartColors = {
 
 export default {
   extends: Doughnut,
-  props: ["proteins", "carbohydrates", "fats"],
+  props: ["proteins", "carbohydrates", "fats", "month"],
   mounted() {
     const chartdata = {
       datasets: [
@@ -48,7 +45,7 @@ export default {
         },
         title: {
           display: true,
-          text: "November"
+          text: this.month
         },
         animation: {
           animateScale: true,

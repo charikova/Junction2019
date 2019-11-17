@@ -1,17 +1,25 @@
 <template>
   <f7-page style="background: white">
-    <div v-if="!loaded"  style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center">
+    <div
+      v-if="!loaded"
+      style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center"
+    >
       <f7-preloader :size="42"></f7-preloader>
     </div>
     <div class="stats" v-if="loaded">
-      <div class="stats-section ">
-        <div class="stats-section-chart">
-          <CircleDiagram
-            :proteins="monthData.proteins"
-            :carbohydrates="monthData.carbohydrates"
-            :fats="monthData.fats"
-          />
-        </div>
+      <div class="stats-section">
+        <f7-swiper navigation :params="{ initialSlide: 2 }">
+          <f7-swiper-slide>
+            <div class="stats-section-chart">
+              <CircleDiagram
+                :proteins="monthData.proteins"
+                :carbohydrates="monthData.carbohydrates"
+                :fats="monthData.fats"
+                :month="monthData.month"
+              />
+            </div>
+          </f7-swiper-slide>
+        </f7-swiper>
       </div>
       <div class="stats-section">
         <div class="stats-row" @click="sugarClick">
@@ -56,6 +64,7 @@
 <script>
 import CircleDiagram from "../components/circleDiagram";
 import ProgressBar from "../components/progressBar";
+import "swiper/dist/css/swiper.css";
 
 export default {
   name: "profile",
@@ -72,19 +81,28 @@ export default {
   },
   data() {
     return {
-      loaded: false
+      loaded: false,
+      monthNames: ["August", "September", "October"],
+      currentMonthIndex: "2"
     };
   },
   computed: {
     monthData: function() {
       const result = this.$store.state.statistics.find(
-        data => data.month === "10"
+        data => data.month === this.monthNames[this.currentMonthIndex]
       );
       result.top = result.top.map(item => ({
         ...item,
         color: item.danger_level > 3 ? "#ff6e7d" : "#ffc935"
       }));
+      console.log(result);
       return result;
+    },
+    augustData: function() {
+      return this.$store.state.statistics.find(data => data.month === "8");
+    },
+    septemberData: function() {
+      return this.$store.state.statistics.find(data => data.month === "9");
     }
   }
 };
