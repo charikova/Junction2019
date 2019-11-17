@@ -22,8 +22,6 @@ const axiosConfig = {
   }
 };
 
-
-
 const getters = {};
 
 const actions = {
@@ -57,7 +55,7 @@ const actions = {
       });
   },
 
-  getProducts ({ getters, commit, state }, data) {
+  getProducts({ getters, commit, state }, data) {
     const axiosConfigAuth = {
       headers: {
         "Content-Type": "application/json",
@@ -65,14 +63,50 @@ const actions = {
       }
     };
     return axios
-        .post(`${URL}products`,data, axiosConfigAuth)
-        .then(({ data }) => {
-          commit("setProducts", data);
-          return true;
-        })
-        .catch(error => {
-          throw error;
-        });
+      .post(`${URL}products`, data, axiosConfigAuth)
+      .then(({ data }) => {
+        commit("setProducts", data);
+        return true;
+      })
+      .catch(error => {
+        throw error;
+      });
+  },
+
+  getFats({ getters, commit, state }, data) {
+    const axiosConfigAuth = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: state.user.token
+      }
+    };
+    return axios
+      .get(`${URL}fats`, data, axiosConfigAuth)
+      .then(({ data }) => {
+        commit("setFats", data);
+        return true;
+      })
+      .catch(error => {
+        throw error;
+      });
+  },
+
+  getSugar({ getters, commit, state }, data) {
+    const axiosConfigAuth = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: state.user.token
+      }
+    };
+    return axios
+      .get(`${URL}sugar`, data, axiosConfigAuth)
+      .then(({ data }) => {
+        commit("setSugar", data);
+        return true;
+      })
+      .catch(error => {
+        throw error;
+      });
   }
 };
 
@@ -99,9 +133,16 @@ const mutations = {
   },
   setProducts(state, data) {
     state.products = data;
-    console.log(state.products)
+    console.log(state.products);
   },
-
+  setFats(state, data) {
+    state.fats = data;
+    console.log(state.fats);
+  },
+  setSugar(state, data) {
+    state.sugar = data;
+    console.log(state.sugar);
+  },
   setE (state, data) {
     state.e = data
   }
