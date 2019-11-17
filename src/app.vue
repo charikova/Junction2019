@@ -1,7 +1,7 @@
 <template>
   <f7-app id="app"
           :params="f7params">
-    <main-page v-if="!login"></main-page>
+    <main-page v-show="!login"></main-page>
     <login v-if="login"></login>
   </f7-app>
 </template>
