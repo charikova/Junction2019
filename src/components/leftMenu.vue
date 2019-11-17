@@ -5,7 +5,6 @@
 </template>
 
 <script>
-    import $$ from 'dom7'
     import { mapState } from 'vuex'
     import Account from "../pages/account";
     export default {

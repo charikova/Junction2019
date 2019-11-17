@@ -27,7 +27,7 @@ import IconsStyles from "./css/icons.css";
 
 
 // Init App
-new Vue({
+export default new Vue({
   template: '<App/>',
   components: {
     app: App

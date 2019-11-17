@@ -53,6 +53,7 @@
         </div>
       </div>
     </div>
+
   </f7-page>
 </template>
 

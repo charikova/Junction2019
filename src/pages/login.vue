@@ -108,9 +108,9 @@
         }
 
         &-logo {
-            width: 160px;
-            height: 140px;
-            background: url('./../img/logoJ.png');
+            width: 100%;
+            height: 80px;
+            background: url('./../img/loloJ.png');
             background-size: cover;
         }
     }
