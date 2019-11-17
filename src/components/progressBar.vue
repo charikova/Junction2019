@@ -28,6 +28,13 @@ export default {
     setTimeout(() => {
       this.percentsReal = this.percents;
     }, 1);
+  },
+  watch: {
+    percents () {
+      setTimeout(() => {
+        this.percentsReal = this.percents;
+      }, 1);
+    }
   }
 };
 </script>
