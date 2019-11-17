@@ -8,7 +8,14 @@
     </div>
     <div class="stats" v-if="loaded">
       <div class="stats-section">
-        <f7-swiper navigation :params="{ initialSlide: 2 }">
+        <f7-swiper
+           ref="swiperRef"
+          navigation
+          :params="{
+            initialSlide: 2,
+            on: { slideChange }
+          }"
+        >
           <f7-swiper-slide v-for="curMonth in months">
             <div class="stats-section-chart">
               <CircleDiagram
@@ -71,6 +78,11 @@ export default {
   methods: {
     sugarClick() {
       this.$f7router.navigate("/purchases/sugar");
+    },
+    slideChange() {
+      const swiper = this.$refs.swiperRef.swiper;
+      if(!swiper) return;
+      this.currentMonth = this.monthNames[swiper.activeIndex];
     }
   },
   mounted() {
@@ -98,9 +110,7 @@ export default {
     },
     months: function() {
       return this.monthNames.map(name =>
-        this.$store.state.statistics.find(
-          data => data.month === name
-        )
+        this.$store.state.statistics.find(data => data.month === name)
       );
     }
   }
