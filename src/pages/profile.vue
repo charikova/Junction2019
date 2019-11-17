@@ -131,6 +131,8 @@ export default {
     box-sizing: border-box;
     border-style: solid;
     padding: 0 9px;
+    min-width: 42px;
+    text-align: center;
   }
   &-label {
     background: $red-color;
@@ -142,6 +144,7 @@ export default {
     font-weight: bold;
     display: inline-block;
     min-width: 57px;
+    box-sizing: border-box;
   }
 }
 </style>
