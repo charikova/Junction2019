@@ -13,14 +13,19 @@
       <div class="stats-section">
         <div class="stats-row" @click="sugarClick">
           <div class="stats-label">Sugar</div>
-          <div class="stats-number">
-            {{ 12 }}
+          <div class="stats-number" style="border-color: #ff6e7d">
+            {{ Math.round(monthData.sugar) }}
           </div>
         </div>
         <div class="stats-row">
-          <progress-bar percents="46" name="Saturated fats" />
+          <progress-bar
+            :percents="
+              Math.round((monthData.fats_saturated / monthData.fats) * 100)
+            "
+            name="Saturated fats"
+          />
           <div class="stats-number" style="border-color: #ff6e7d">
-            {{ 12 }}
+            {{ Math.round(monthData.fats_saturated) }}
           </div>
           <!--<div class="stats-i-icon">-->
           <!--<i class="f7-icons">info</i>-->
@@ -29,31 +34,19 @@
       </div>
       <div class="stats-section">
         <div class="stats-section-title">Food additives</div>
-        <div class="stats-row">
+        <div class="stats-row" v-for="e in Object.keys(monthData.top)">
           <div>
-            <span class="stats-label" style="background-color: #ff6e7d"
-              >E102</span
-            >
+            <span class="stats-label" style="background-color: #ff6e7d">{{
+              e
+            }}</span>
             <span style="margin-left: 10px">Tartrazine</span>
           </div>
           <div class="stats-number" style="border-color: #ff6e7d">
-            {{ 12 }}
-          </div>
-        </div>
-        <div class="stats-row">
-          <div>
-            <span class="stats-label" style="background-color: #ffc935"
-              >E124</span
-            >
-            <span style="margin-left: 10px">Ponceau</span>
-          </div>
-          <div class="stats-number" style="border-color: #ffc935">
-            {{ 12 }}
+            {{ monthData.top[e] }}
           </div>
         </div>
       </div>
     </div>
-
   </f7-page>
 </template>
 
@@ -148,6 +141,7 @@ export default {
     color: #fff;
     font-weight: bold;
     display: inline-block;
+    min-width: 57px;
   }
 }
 </style>
