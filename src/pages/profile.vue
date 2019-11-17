@@ -61,6 +61,9 @@ export default {
     sugarClick() {
       this.$f7router.navigate('/purchases/sugar')
     }
+  },
+  mounted() {
+    this.$store.dispatch("getStatistics");
   }
 };
 </script>
