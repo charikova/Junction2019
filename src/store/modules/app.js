@@ -8,7 +8,7 @@ const URL = `http://${process.env.VUE_APP_API_HOST}:${
 
 const initialState = () => ({
   user: {},
-  activeMenu: 'Yours statistics',
+  activeMenu: 'Your statistics',
   login: true,
   openedPanel: false,
   f7: {}
@@ -62,8 +62,10 @@ const mutations = {
     state.user = {};
     state.login = true;
     localStorage.setItem('token', '')
+  },
+  setMenuName(state, activeMenu) {
+    state.activeMenu = activeMenu;
   }
-
 };
 
 export default {

@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="stats-section">
-        <div class="stats-row">
+        <div class="stats-row" @click="sugarClick">
           <div class="stats-label">Sugar</div>
           <div class="stats-number">
             {{ 12 }}
@@ -23,7 +23,7 @@
           <!--</div>-->
         </div>
       </div>
-      <div class="stats-section ">
+      <div class="stats-section">
         <div class="stats-section-title">Food additives</div>
         <div class="stats-row">
           <div>
@@ -56,7 +56,12 @@ import LeftMenu from "../components/leftMenu"
 
 export default {
   name: "profile",
-  components: { ProgressBar, CircleDiagram, LeftMenu  }
+  components: { ProgressBar, CircleDiagram },
+  methods: {
+    sugarClick() {
+      this.$f7router.navigate('/purchases/sugar')
+    }
+  }
 };
 </script>
 
@@ -65,7 +70,7 @@ export default {
 
 .stats {
   max-width: 500px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   &-section {
     padding: 15px;
     border-bottom: 1px solid #ddd;
@@ -79,6 +84,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    cursor: pointer;
     &:not(:last-child) {
       margin-bottom: 10px;
     }

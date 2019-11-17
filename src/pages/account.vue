@@ -28,10 +28,29 @@
 <script>
     import {mapState} from 'vuex'
 
-    export default {
-        name: "account",
-        computed: {
-            ...mapState(['user'])
+  export default {
+    name: "account",
+    computed: {
+        ...mapState(['user'])
+    },
+    data () {
+      return {
+          links: [{
+              title: 'Your statistics',
+              link: '/'
+          },{
+              title: 'Recommended recipes',
+              link: '/recipes'
+          }, {
+              title: 'Profile',
+              link: '/profile'
+          }]
+      }
+    },
+    methods: {
+        logOut () {
+            this.$store.commit('openPanel', false)
+            setTimeout(()=>this.$store.commit('logout'), 300)
         },
         data() {
             return {
