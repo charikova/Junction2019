@@ -34,15 +34,15 @@
       </div>
       <div class="stats-section">
         <div class="stats-section-title">Food additives</div>
-        <div class="stats-row" v-for="e in Object.keys(monthData.top)">
+        <div class="stats-row" v-for="e in monthData.top">
           <div>
-            <span class="stats-label" style="background-color: #ff6e7d">{{
-              e
+            <span class="stats-label" :style="`background-color: ${e.color}`">{{
+              e.e
             }}</span>
-            <span style="margin-left: 10px">Tartrazine</span>
+            <span style="margin-left: 10px">{{ e.name }}</span>
           </div>
-          <div class="stats-number" style="border-color: #ff6e7d">
-            {{ monthData.top[e] }}
+          <div class="stats-number" :style="`border-color: ${e.color}`">
+            {{ e.count }}
           </div>
         </div>
       </div>
@@ -77,6 +77,10 @@ export default {
       const result = this.$store.state.statistics.find(
         data => data.month === "10"
       );
+      result.top = result.top.map(item => ({
+        ...item,
+        color: item.danger_level > 3 ? "#ff6e7d" : "#ffc935"
+      }));
       return result;
     }
   }
@@ -131,6 +135,8 @@ export default {
     box-sizing: border-box;
     border-style: solid;
     padding: 0 9px;
+    min-width: 42px;
+    text-align: center;
   }
   &-label {
     background: $red-color;
@@ -142,6 +148,7 @@ export default {
     font-weight: bold;
     display: inline-block;
     min-width: 57px;
+    box-sizing: border-box;
   }
 }
 </style>
