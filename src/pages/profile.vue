@@ -9,13 +9,13 @@
     <div class="stats" v-if="loaded">
       <div class="stats-section">
         <f7-swiper navigation :params="{ initialSlide: 2 }">
-          <f7-swiper-slide>
+          <f7-swiper-slide v-for="curMonth in months">
             <div class="stats-section-chart">
               <CircleDiagram
-                :proteins="monthData.proteins"
-                :carbohydrates="monthData.carbohydrates"
-                :fats="monthData.fats"
-                :month="monthData.month"
+                :proteins="curMonth.proteins"
+                :carbohydrates="curMonth.carbohydrates"
+                :fats="curMonth.fats"
+                :month="curMonth.month"
               />
             </div>
           </f7-swiper-slide>
@@ -64,7 +64,6 @@
 <script>
 import CircleDiagram from "../components/circleDiagram";
 import ProgressBar from "../components/progressBar";
-import "swiper/dist/css/swiper.css";
 
 export default {
   name: "profile",
@@ -95,14 +94,14 @@ export default {
         ...item,
         color: item.danger_level > 3 ? "#ff6e7d" : "#ffc935"
       }));
-      console.log(result);
       return result;
     },
-    augustData: function() {
-      return this.$store.state.statistics.find(data => data.month === "8");
-    },
-    septemberData: function() {
-      return this.$store.state.statistics.find(data => data.month === "9");
+    months: function() {
+      return this.monthNames.map(name =>
+        this.$store.state.statistics.find(
+          data => data.month === name
+        )
+      );
     }
   }
 };
