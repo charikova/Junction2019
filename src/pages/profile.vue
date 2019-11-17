@@ -85,7 +85,7 @@ export default {
           month: this.currentMonth
         })
         .then(() => {
-          this.$f7router.navigate("/purchases/sugar");
+          this.$router.push("/purchases/sugar");
         });
     },
     fatsClick() {
@@ -94,7 +94,7 @@ export default {
           month: this.currentMonth
         })
         .then(() => {
-          this.$f7router.navigate("/purchases/fats");
+          this.$router.push("/purchases/fats");
         });
     },
     slideChange() {
@@ -110,7 +110,7 @@ export default {
       })
         .then(()=>{
             this.$store.commit('setE', e)
-            this.$f7router.navigate('listE', { reloadAll:true })
+            this.$router.push('listE')
         })
     }
   },

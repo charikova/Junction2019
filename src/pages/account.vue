@@ -53,11 +53,11 @@
             logOut() {
                 this.$store.commit('openPanel', false)
                 setTimeout(() => this.$store.commit('logout'), 300)
-                this.$router.push(item.link,)('/')
+                this.$router.push('/')
             },
             navigateLink(item) {
                 this.$store.commit('setMenuName', item.title)
-                this.$router.push(item.link,)
+                this.$router.push(item.link)
                 this.$store.commit('openPanel', false)
             }
         }
